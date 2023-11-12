@@ -17,8 +17,8 @@ def output_path(path):
     print("")
 
 def main():
+    print("Carregando grafo...")
     graph = Graph('netflix_titles.csv')
-    # graph.display()
     while True:
         name = input("Digite o nome do ator: ")
         path = graph.get_path_from_kevin(name)
