@@ -2,6 +2,9 @@ from graph import Graph
 from colorama import Fore
 
 def output_path(path):
+    if len(path) == 0:
+        print("\nNão foi possível encontrar um caminho...\n")
+        return
     print("")
     for index, node in enumerate(path):
         if index == 0:
@@ -19,14 +22,16 @@ def main():
     while True:
         name = input("Digite o nome do ator: ")
         path = graph.get_path_from_kevin(name)
-        output_path(path=path)
-        print("O que deseja agora?\na. Buscar outra conexão\nb. Sair\n")
-        next_step = input("Selecione 'a' ou 'b': ").lower().strip()
-        while next_step != 'a' and next_step != 'b':
-            next_step = input("Selecione uma opção válida: ")
-        if next_step == 'b':
-            break
-        
+        if path != -1:
+            output_path(path=path)
+            print("O que deseja agora?\na. Buscar outra conexão\nb. Sair\n")
+            next_step = input("Selecione 'a' ou 'b': ").lower().strip()
+            while next_step != 'a' and next_step != 'b':
+                next_step = input("Selecione uma opção válida: ")
+            if next_step == 'b':
+                break
+        else:
+            print("Nome inválido. Tente novamente!")
             
 
 if __name__ == '__main__':
